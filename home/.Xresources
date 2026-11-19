@@ -1,0 +1,10 @@
+! Cursor (same as XFCE)
+Xcursor.theme: Bibata-Modern-Ice
+Xcursor.size: 20
+
+! Font smoothing (same as XFCE)
+Xft.dpi: 96
+Xft.antialias: 1
+Xft.hinting: 1
+Xft.hintstyle: hintfull
+Xft.rgba: none

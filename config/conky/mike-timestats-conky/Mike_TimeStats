@@ -1,0 +1,57 @@
+-- Mike TimeStats-Conky  v2.0.0 (minimal centered redesign by Claude)
+-- Original author: MikeDevQH  ·  michaelqhdez@gmail.com
+-- License: GPLv3
+--
+-- IMPORTANT: replace YOUR_CITY with your city (wttr.in lines).
+-- The widget position is adjusted manually with alignment/gap_x/gap_y.
+
+conky.config = {
+    use_xft = true,
+    font = '123:size=8',
+    xftalpha = 0.1,
+    update_interval = 3,
+    total_run_times = 0,
+
+    own_window = true,
+    -- On XFCE it is a 'desktop' window (at the bottom of the desktop).
+    -- i3 does not have that layer and, if i3 manages the window, it raises it
+    -- above tiled windows; therefore in i3 it is created as 'override' (i3
+    -- ignores it) and ~/.config/i3/conky.sh lowers it to the bottom of the X
+    -- stack.
+    own_window_type = os.getenv('I3SOCK') and 'override' or 'desktop',
+    own_window_transparent = true,
+    own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+    own_window_colour = '000000',
+    own_window_argb_visual = true,
+    own_window_argb_value = 0,
+
+    double_buffer = true,
+    draw_shades = false,
+    draw_outline = false,
+    draw_borders = false,
+    draw_graph_borders = false,
+    default_color = 'white',
+
+    alignment = 'top_middle',
+    gap_x = 0,
+    gap_y = 60,
+
+    no_buffers = true,
+    uppercase = false,
+    cpu_avg_samples = 2,
+    net_avg_samples = 1,
+    override_utf8_locale = true,
+    use_spacer = 'left',
+
+    minimum_width = 800,
+    minimum_height = 300,
+}
+
+conky.text = [[
+${alignc}${font Anurati:size=55}${execi 3600 LC_ALL=en_US.UTF-8 date +%A | tr '[:lower:]' '[:upper:]' | sed 's/./&   /g; s/ *$//'}${font}${color}
+${voffset 18}${alignc}${font Nasalization:pixelsize=22}${execi 60 LC_ALL=en_US.UTF-8 date '+%d %B, %Y.' | tr '[:lower:]' '[:upper:]' | sed 's/./& /g; s/ *$//'}${font}${color}
+${voffset 12}${alignc}${font Nasalization:pixelsize=20}${execi 60 echo "- $(date '+%-I:%M %p') -" | sed 's/./& /g; s/ *$//'}${font}${color}
+${voffset 35}${alignc}${font Nasalization:pixelsize=18}${execi 1800 curl -s --connect-timeout 10 "https://wttr.in/YOUR_CITY?m&lang=en&format=%l" | sed 's/,.*//'}${font}
+${voffset 6}${alignc}${font Nasalization:pixelsize=18}${execi 1800 curl -s --connect-timeout 10 "https://wttr.in/YOUR_CITY?m&lang=en&format=%t" | sed 's/+//;s/°.//'}°C  ·  ${execi 1800 curl -s --connect-timeout 10 "https://wttr.in/YOUR_CITY?m&lang=en&format=%C"}${font}
+${voffset 6}${alignc}${font Nasalization:pixelsize=16}Feels like: ${execi 1800 curl -s --connect-timeout 10 "https://wttr.in/YOUR_CITY?m&lang=en&format=%f" | sed 's/+//;s/°.//'}°C   Humidity: ${execi 1800 curl -s --connect-timeout 10 "https://wttr.in/YOUR_CITY?m&lang=en&format=%h" | sed 's/%//'}%${font}
+]]

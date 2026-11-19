@@ -1,0 +1,15 @@
+/* Rofi config — theme: adi1090x / launchers / type-3 / style-3
+ *
+ * To change the style: edit the @theme line below.
+ *   Styles in:  ~/.config/rofi/launchers/type-3/style-1..10.rasi
+ * Color scheme:  ~/.config/rofi/launchers/type-3/shared/colors.rasi
+ *   (schemes in ~/.config/rofi/colors/, for example catppuccin.rasi)
+ */
+
+configuration {
+    font: "Iosevka Nerd Font 10";
+    show-icons: true;
+    icon-theme: "Papirus";
+}
+
+@theme "~/.config/rofi/launchers/type-3/style-3.rasi"

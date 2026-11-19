@@ -1,0 +1,18 @@
+# Backups and temporary files
+*.bak
+*.bak.*
+*.old
+*.tmp
+*~
+
+# Local status/cache
+.cache/
+*.log
+
+# System
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.pyc

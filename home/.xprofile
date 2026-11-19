@@ -1,0 +1,4 @@
+# i3 session cursor and themes (same as XFCE).
+# LightDM loads this file when the session starts.
+export XCURSOR_THEME=Bibata-Modern-Ice
+export XCURSOR_SIZE=20
